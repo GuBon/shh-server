@@ -1,0 +1,66 @@
+# Test your FastAPI endpoints
+
+### Health Check
+GET http://127.0.0.1:8000/
+Accept: application/json
+
+### 🔍 DEBUG: 테이블 구조 확인
+GET http://127.0.0.1:8000/api/v1/debug/table-structure
+Accept: application/json
+
+### 🔍 DEBUG: district_clusters 테이블 확인
+GET http://127.0.0.1:8000/api/v1/debug/district-clusters
+Accept: application/json
+
+### 🔍 DEBUG: industry_clusters 테이블 확인
+GET http://127.0.0.1:8000/api/v1/debug/industry-clusters
+Accept: application/json
+
+### 🔍 DEBUG: 카페 업종 검색
+GET http://127.0.0.1:8000/api/v1/debug/search-industry/카페
+Accept: application/json
+
+### 🔍 DEBUG: 좌표 테스트
+GET http://127.0.0.1:8000/api/v1/debug/test-coordinates?x=126.9834&y=37.5636
+Accept: application/json
+
+### 아이디 중복 체크
+GET http://127.0.0.1:8000/api/v1/auth/check-username?login_id=testuser2
+Accept: application/json
+
+### 회원가입 테스트 (디버깅용)
+POST http://127.0.0.1:8000/api/v1/auth/signup
+Content-Type: application/json
+
+{
+  "login_id": "testuser2",
+  "password": "password123",
+  "name": "구본경",
+  "store_info": {
+    "kakao_place_id": "123456789",
+    "store_name": "구본경의 테스트 카페",
+    "place_url": "https://place.map.kakao.com/123456789",
+    "phone": "02-1234-5678",
+    "road_address_name": "서울특별시 중구 명동길 26",
+    "industry_name": "카페",
+    "x": 126.9834,
+    "y": 37.5636
+  },
+  "business_number": "123-45-67890"
+}
+
+### 로그인 테스트
+POST http://127.0.0.1:8000/api/v1/auth/login
+Content-Type: application/x-www-form-urlencoded
+
+username=testuser2&password=password123
+
+### 내 상권 정보 조회 (로그인 필요)
+GET http://127.0.0.1:8000/api/v1/stores/me/district
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+### 내 업종 정보 조회 (로그인 필요)
+GET http://127.0.0.1:8000/api/v1/stores/me/industry
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+###
