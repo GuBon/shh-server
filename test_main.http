@@ -64,3 +64,82 @@ GET http://127.0.0.1:8000/api/v1/stores/me/industry
 Authorization: Bearer YOUR_JWT_TOKEN_HERE
 
 ###
+
+# ===== 🏪 매장 정보 수정 APIs =====
+
+### 내 매장 상세 정보 조회 (이미지 포함)
+GET http://127.0.0.1:8000/api/v1/stores/me/detail
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+###
+
+### 매장 상세 내용 수정
+PATCH http://127.0.0.1:8000/api/v1/stores/me/info
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+Content-Type: application/json
+
+{
+  "storeDescription": "신선한 원두와 정성스럽게 내린 커피를 제공하는 소확행 카페입니다. 조용하고 아늑한 분위기에서 휴식을 취하실 수 있습니다. ☕️✨"
+}
+
+###
+
+### 내 매장 이미지 목록 조회
+GET http://127.0.0.1:8000/api/v1/stores/me/images
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+###
+
+### 매장 이미지 추가 (1번 이미지)
+POST http://127.0.0.1:8000/api/v1/stores/me/images
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+Content-Type: application/json
+
+{
+  "imageUrl": "https://via.placeholder.com/600x400/FF5733/FFFFFF?text=Store+Photo+1",
+  "sequence": 1
+}
+
+###
+
+### 매장 이미지 추가 (2번 이미지)
+POST http://127.0.0.1:8000/api/v1/stores/me/images
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+Content-Type: application/json
+
+{
+  "imageUrl": "https://via.placeholder.com/600x400/33C7FF/FFFFFF?text=Store+Photo+2",
+  "sequence": 2
+}
+
+###
+
+### 매장 이미지 추가 (3번 이미지)
+POST http://127.0.0.1:8000/api/v1/stores/me/images
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+Content-Type: application/json
+
+{
+  "imageUrl": "https://via.placeholder.com/600x400/33FF57/FFFFFF?text=Store+Photo+3",
+  "sequence": 3
+}
+
+###
+
+### 매장 이미지 수정 (1번 이미지 변경)
+PUT http://127.0.0.1:8000/api/v1/stores/me/images/1
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+Content-Type: application/json
+
+{
+  "imageUrl": "https://via.placeholder.com/600x400/FFD700/000000?text=Updated+Photo",
+  "sequence": 1
+}
+
+###
+
+### 매장 이미지 삭제 (2번 이미지 삭제)
+DELETE http://127.0.0.1:8000/api/v1/stores/me/images/2
+Authorization: Bearer YOUR_JWT_TOKEN_HERE
+
+###
