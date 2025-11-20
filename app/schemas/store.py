@@ -22,6 +22,53 @@ class StoreUpdate(BaseModel):
     phone: Optional[str] = None
 
 
+# ----- 매장 정보 수정 전용 스키마 -----
+class StoreInfoUpdate(BaseModel):
+    """매장 정보 수정 (상세 내용만)"""
+    storeDescription: Optional[str] = None
+
+
+class StoreImageUpload(BaseModel):
+    """매장 이미지 업로드"""
+    imageUrl: str
+    sequence: int  # 1~5
+
+    class Config:
+        json_schema_extra = {
+            "example": {
+                "imageUrl": "https://example.com/image.jpg",
+                "sequence": 1
+            }
+        }
+
+
+class StoreImageOut(BaseModel):
+    """매장 이미지 출력"""
+    id: int
+    imageUrl: str
+    sequence: int
+
+    class Config:
+        from_attributes = True
+
+
+class StoreDetailOut(BaseModel):
+    """매장 상세 정보 (이미지 포함)"""
+    id: int
+    store_name: str
+    industry_name: str
+    district_name: Optional[str]
+    road_address_name: Optional[str]
+    phone: Optional[str]
+    store_description: Optional[str]
+    x: Optional[float]
+    y: Optional[float]
+    images: List[StoreImageOut] = []
+
+    class Config:
+        from_attributes = True
+
+
 class StoreOut(BaseModel):
     id: int
     store_name: str
